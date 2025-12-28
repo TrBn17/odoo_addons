@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Main Menu -->
+    <menuitem id="menu_hr_gemini_root"
+              name="HR AI Assistant"
+              web_icon="hr_gemini_assistant,static/description/icon.png"
+              sequence="100"/>
+
+    <!-- Sub Menu -->
+    <menuitem id="menu_gemini_chat"
+              name="AI Chats"
+              parent="menu_hr_gemini_root"
+              action="action_gemini_chat"
+              sequence="10"/>
+</odoo>

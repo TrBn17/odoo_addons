@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Gemini Chat Tree View -->
+    <record id="view_gemini_chat_tree" model="ir.ui.view">
+        <field name="name">gemini.chat.tree</field>
+        <field name="model">gemini.chat</field>
+        <field name="arch" type="xml">
+            <tree string="AI Chats">
+                <field name="name"/>
+                <field name="user_id"/>
+                <field name="state"/>
+                <field name="create_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Gemini Chat Form View - Modern Chat Interface -->
+    <record id="view_gemini_chat_form" model="ir.ui.view">
+        <field name="name">gemini.chat.form</field>
+        <field name="model">gemini.chat</field>
+        <field name="arch" type="xml">
+            <form string="AI Assistant Chat" class="o_gemini_chat_form">
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,active,closed"/>
+                </header>
+                <sheet>
+                    <div class="o_chat_container">
+                        <!-- Chat Header -->
+                        <div class="o_chat_header">
+                            <h2>
+                                <i class="fa fa-comments-o"/> 
+                                <field name="name" placeholder="Tiêu đề chat" class="o_field_char"/>
+                            </h2>
+                            <div style="margin-top: 8px; opacity: 0.9;">
+                                <i class="fa fa-user"/>
+                                <field name="user_id" readonly="1" class="o_field_many2one"/>
+                                <span style="margin: 0 10px;">•</span>
+                                <i class="fa fa-clock-o"/>
+                                <field name="create_date" readonly="1" class="o_field_datetime"/>
+                            </div>
+                        </div>
+                        
+                        <!-- Chat Messages Display -->
+                        <div class="o_chat_messages">
+                            <field name="message_ids" nolabel="1" widget="one2many" mode="tree" 
+                                   options="{'no_create': True, 'no_open': True}">
+                                <tree decoration-info="message_type == 'user'" 
+                                      decoration-success="message_type == 'assistant'"
+                                      create="0" delete="0" edit="0">
+                                    <field name="message_type" invisible="1"/>
+                                    <field name="content" widget="text"/>
+                                    <field name="create_date"/>
+                                </tree>
+                            </field>
+                        </div>
+                        
+                        <!-- Message Input Area -->
+                        <div class="o_chat_input_area">
+                            <field name="message_input" widget="text" nolabel="1" 
+                                   class="o_chat_input"
+                                   placeholder="💬 Hỏi về nhân viên... (Ví dụ: Có bao nhiêu nhân viên? Ai là quản lý phòng Sales?)"/>
+                            <div style="text-align: right; margin-top: 12px;">
+                                <button name="action_send_message" string="Gửi tin nhắn" type="object" 
+                                        class="o_chat_send_button btn-primary"
+                                        icon="fa-paper-plane"/>
+                            </div>
+                        </div>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Actions -->
+    <record id="action_gemini_chat" model="ir.actions.act_window">
+        <field name="name">AI Assistant Chats</field>
+        <field name="res_model">gemini.chat</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Bắt đầu trò chuyện mới với AI Assistant
+            </p>
+            <p>
+                Đặt câu hỏi về nhân viên bằng ngôn ngữ tự nhiên và nhận câu trả lời ngay lập tức!
+            </p>
+        </field>
+    </record>
+</odoo>

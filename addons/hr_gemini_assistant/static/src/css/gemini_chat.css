@@ -1,0 +1,124 @@
+/* Gemini Chat Modern Interface Styles */
+
+.o_gemini_chat_form {
+    max-width: 100% !important;
+}
+
+.o_chat_container {
+    background: #f5f7fa;
+    border-radius: 12px;
+    padding: 0;
+    margin: 20px 0;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.o_chat_header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 12px 12px 0 0;
+}
+
+.o_chat_header h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.o_chat_header .o_field_char,
+.o_chat_header .o_field_many2one,
+.o_chat_header .o_field_datetime {
+    background: transparent !important;
+    border: none !important;
+    color: white !important;
+}
+
+.o_chat_messages {
+    min-height: 500px;
+    max-height: 600px;
+    overflow-y: auto;
+    padding: 20px;
+    background: white;
+}
+
+.o_chat_input_area {
+    background: #fff;
+    padding: 20px;
+    border-radius: 0 0 12px 12px;
+    border-top: 2px solid #e1e8ed;
+}
+
+/* Message bubbles - user messages */
+.o_list_view tbody tr.o_data_row[data-field-message_type="user"] {
+    background: #667eea !important;
+    color: white !important;
+    border-radius: 18px 18px 4px 18px !important;
+    margin: 8px 0;
+}
+
+/* Message bubbles - assistant messages */
+.o_list_view tbody tr.o_data_row[data-field-message_type="assistant"] {
+    background: #e8eef3 !important;
+    color: #333 !important;
+    border-radius: 18px 18px 18px 4px !important;
+    margin: 8px 0;
+}
+
+/* Chat input styling */
+textarea.o_chat_input,
+.o_chat_input_area .o_field_text textarea {
+    border: 2px solid #e1e8ed !important;
+    border-radius: 8px !important;
+    padding: 12px !important;
+    font-size: 15px !important;
+    resize: vertical !important;
+    transition: border-color 0.3s !important;
+    width: 100% !important;
+    min-height: 100px !important;
+}
+
+textarea.o_chat_input:focus,
+.o_chat_input_area .o_field_text textarea:focus {
+    border-color: #667eea !important;
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+}
+
+/* Send button styling */
+.o_chat_send_button,
+button[name="action_send_message"] {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+    border: none !important;
+    padding: 12px 32px !important;
+    border-radius: 8px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.3s !important;
+}
+
+.o_chat_send_button:hover,
+button[name="action_send_message"]:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4) !important;
+}
+
+/* Scrollbar styling */
+.o_chat_messages::-webkit-scrollbar {
+    width: 8px;
+}
+
+.o_chat_messages::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.o_chat_messages::-webkit-scrollbar-thumb {
+    background: #667eea;
+    border-radius: 4px;
+}
+
+.o_chat_messages::-webkit-scrollbar-thumb:hover {
+    background: #764ba2;
+}
